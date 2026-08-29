@@ -1,0 +1,134 @@
+Supplementary Materials & Appendices
+________________________________________
+Appendix A: Structure-Disruption-Stabilization (S-D-S) Pedagogical Protocol
+The Structure-Disruption-Stabilization (S-D-S) pedagogical model was administered to the Experimental Group (EG) over a 24-week intervention period comprising 72 sessions (3 sessions/week, 90 minutes/session; 108 cumulative instructional hours). The protocol aims to systematically dismantle L1-mediated translation loops and establish direct concept-to-L2 mappings.
+       Phase 1: Structure (W1–W8)
+  [Visual/Spatial Concept] ──(Direct Mapping)──> [L2 Lemma & Syntax]
+               │ (Strict No-Gloss Policy)
+               ▼
+       Phase 2: Disruption (W9–W16)
+  [L1 Competitor Node] ──(Speeded Inhibition / High-Pressure Tasks)──X (Suppressed)
+               │ (Rapid Semantic Stroop & Paraphrase)
+               ▼
+      Phase 3: Stabilization (W17–W24)
+  [Multi-modal Concept Core] ════(Automatized Direct Access)════> [Fluent L2 Output]
+Table A1: Detailed Phase-by-Phase Breakdown of the S-D-S Curriculum
+content_copy 
+Phase	Timeframe	Theoretical Objective	Core Pedagogical Activities & Task Types	Strict Constraints & Target Drills
+Phase 1: Structure (Concept-to-L2 Anchoring)	Weeks 1–8<br>(Sessions 1–24)	Establish direct conceptual associations in semantic memory; eliminate bilingual glossary lookup.	• Visual schema induction via high-resolution situational animations.<br>• Semantic feature webbing without orthographic L1 references.<br>• Direct contextual modeling (embodied cognition tasks).	• Zero L1 glossary or dictionary tolerance.<br>• All new lexical items presented solely through contextual cues, physical demonstrations, and visual contrast sets.
+Phase 2: Disruption (L1-Inhibition & De-mediation)	Weeks 9–16<br>(Sessions 25–48)	Overload and bypass working-memory translation buffers; suppress L1 lemma competition.	• Ultra-rapid picture naming and scenario description (forced latency <1500" ms" ).<br>• Speeded semantic Stroop and rapid synonym/paraphrase generation.<br>• Dual-task interference paradigm (concurrent visual-spatial tracking).	• Progressive time compression (5.0" s"→2.5" s"→1.5" s" ).<br>• Immediate corrective interruption upon detection of syntactic calquing or translation hesitations.
+Phase 3: Stabilization (Automated Integration)	Weeks 17–24<br>(Sessions 49–72)	Consolidate and proceduralize direct conceptual links; establish fluent, native-like lexical retrieval.	• Unscripted, continuous argumentation and multi-perspective debates.<br>• Complex abstract scenario narrations.<br>• Spontaneous academic discourse simulation.	• Cognitive load scaling (spontaneous interruptions, complex premise shifts).<br>• Assessment of communicative smoothness and total conceptual fluency.
+________________________________________
+Appendix B: Technical EEG Specifications, Preprocessing Pipeline, and ICA Rejection
+Electroencephalographic (EEG) recordings were acquired longitudinally across three experimental waves: Baseline (Month 1), Mid-Intervention (Month 3), and Post-Intervention (Month 6).
+1. Acquisition Hardware & Electrode Array
+	System: 64-channel BioSemi ActiveTwo active-electrode system.
+	Electrode Placement: Extended International 10–20 layout mounted in an elastic cap.
+	Reference & Ground: Common Mode Sense (CMS) active electrode and Driven Right Leg (DRL) passive electrode forming a feedback loop.
+	Sampling Rate: 500" Hz" online acquisition (24"-bit"  A/D resolution).
+	Impedances: Maintained strictly below 10" k" Ω(offset voltage <±20" mV" ) across all channels prior to recording.
+	EOG Configuration: 4 electrooculographic channels (bipolar vertical VEOG above/below the left eye for blinks; bipolar horizontal HEOG at the outer canthi of both eyes for saccades).
+2. Preprocessing Pipeline (EEGLAB / MATLAB)
+	Re-Referencing: Raw continuous signals were re-referenced offline to the mathematically computed algebraic average of the left and right mastoids (("M1" +"M2" )/2).
+	Bandpass Filtering: A zero-phase Hamming windowed sinc FIR filter (EEGLAB pop_eegfiltnew) was applied: 
+	High-pass cutoff: 0.1" Hz" (6" dB/octave"  rolloff, transition bandwidth 0.2" Hz" ).
+	Low-pass cutoff: 30" Hz" (24" dB/octave"  rolloff, transition bandwidth 7.5" Hz" ).
+	Notch filter: 50" Hz" infinite impulse response (IIR) notch filter to eliminate power-line interference.
+	Epoching & Baseline Correction: Continuous data were segmented into stimulus-locked epochs spanning from -200" ms" pre-stimulus to +800" ms" post-stimulus onset. Epochs were baseline-corrected relative to the -200" ms" to 0" ms" pre-stimulus mean amplitude.
+	Independent Component Analysis (ICA): Extended Infomax ICA (Bell & Sejnowski, 1995) was performed on un-epoched, filtered continuous datasets. Independent components (ICs) representing blink artifacts, horizontal saccadic deflections, and high-frequency temporalis myogenic bursts were identified and subtracted using spatial topographies, frequency spectra, and time-course activity profiles via ICLabel (Pion-Tonachini et al., 2019).
+	Artifact Rejection: Post-ICA epochs containing residual amplitudes exceeding ±75" " μ"V" , voltage steps >50" " μ"V"/"ms" , or flatline segments >100" ms" were flagged and automatically rejected. Across all cohorts and timepoints, an average of 94.3%of trials were retained for grand averaging.
+                                            
+Raw 64-Ch Continuous EEG (500 Hz)
+  │
+  ├──> Re-reference to Mastoid Average [(M1+M2)/2]
+  ├──> Bandpass Filter [0.1 – 30 Hz FIR] + 50 Hz Notch
+  ├──> Extended Infomax ICA ──> Subtraction of Blink / Saccade / Myogenic ICs
+  ├──> Epoch Segmentation [-200 ms to +800 ms]
+  ├──> Baseline Correction [-200 ms to 0 ms]
+  └──> Residual Artifact Threshold Rejection (±75 μV)
+        │
+        └──> Grand-Averaged ERP Waveforms (N400 Window: 300–500 ms)
+             Target ROI: Centro-Parietal (Cz, CP1, CP2, Pz)
+________________________________________
+Appendix C: Full Statistical Model Formulations & Syntax
+Statistical analyses were executed in the R computational environment (v4.3.2) utilizing the geepack and lme4 packages.
+1. Generalized Estimating Equations (GEE) for Overdispersed Longitudinal Count Data
+For discrete non-negative integer counts exhibiting longitudinal within-subject clustering (L1_Req and L1_Calque), Generalized Estimating Equations with a Poisson error distribution, a logarithmic link function, and a first-order autoregressive correlation structure ("AR" (1)) were fitted:
+log⁡(μ_ij )=β_0+β_1 (〖"Group" 〗_i )+β_2 (〖"Month" 〗_ij )+β_3 (〖"Group" 〗_i×〖"Month" 〗_ij )
+
+"Var" (Y_ij )=ϕ⋅μ_ij
+
+where idenotes the individual participant (i=1,…,40) and jdenotes the longitudinal wave (j∈{1ⓜ,3ⓜ,6}). Standard errors were estimated using the robust Huber-White sandwich estimator.
+R Syntax (geepack):
+                                            content_copy                        Rnote_addویرایش با Canvas
+library(geepack)
+
+# Poisson GEE model for L1 Translation Requests
+gee_req <- geeglm(
+  L1_Req ~ Group * Month,
+  id = Participant,
+  data = dataset,
+  family = poisson(link = "log"),
+  corstr = "ar1"
+)
+summary(gee_req)
+
+# Poisson GEE model for L1 Calques / Syntactic Intrusions
+gee_calque <- geeglm(
+  L1_Calque ~ Group * Month,
+  id = Participant,
+  data = dataset,
+  family = poisson(link = "log"),
+  corstr = "ar1"
+)
+summary(gee_calque)
+________________________________________
+2. Linear Mixed-Effects Models (LMM) for Continuous Longitudinal Outcomes
+For continuous neurocognitive and psycholinguistic indices (Latency, Fluency, N400_Amp), Linear Mixed-Effects Models were estimated using Restricted Maximum Likelihood (REML). The random-effects structure included participant-level random intercepts and random slopes across months:
+Y_ij=β_0+β_1 (〖"Group" 〗_i )+β_2 (〖"Month" 〗_ij )+β_3 (〖"Group" 〗_i×〖"Month" 〗_ij )+u_0i+u_1i (〖"Month" 〗_ij )+ε_ij
+
+(■(u_0i@u_1i ))∼N((■(0@0))ⓜ,(■(σ_(u_0)^2&σ_(u_0 u_1 )@σ_(u_0 u_1 )&σ_(u_1)^2 )) ), ε_ij∼N(0ⓜ,σ_ε^2 )
+
+Degrees of freedom and corresponding p-values were calculated using Satterthwaite’s approximation.
+R Syntax (lme4 / lmerTest):
+                                            content_copy                        Rnote_addویرایش با Canvas
+library(lme4)
+library(lmerTest)
+
+# Linear Mixed-Effects Model for Speech Production Latency (ms)
+lmm_latency <- lmer(
+  Latency ~ Group * Month + (1 + Month | Participant),
+  data = dataset,
+  REML = TRUE
+)
+summary(lmm_latency)
+
+# Linear Mixed-Effects Model for Conceptual Fluency (1-10 Scale)
+lmm_fluency <- lmer(
+  Fluency ~ Group * Month + (1 + Month | Participant),
+  data = dataset,
+  REML = TRUE
+)
+summary(lmm_fluency)
+
+# Linear Mixed-Effects Model for N400 Amplitude (μV)
+lmm_n400 <- lmer(
+  N400_Amp ~ Group * Month + (1 + Month | Participant),
+  data = dataset,
+  REML = TRUE
+)
+summary(lmm_n400)
+________________________________________
+Appendix D: Rubric for the Evaluation of Direct Conceptual Fluency (1–10 Scale)
+The Conceptual Fluency Scale assesses real-time oral production on a 10-point continuum, focusing on the reduction of L1 mediation, processing delays, and syntactic calquing.
+[Score 1–3: Low]        ──> Heavy L1 mediation; frequent silent/filled pauses; literal calquing.
+[Score 4–6: Moderate]   ──> Emerging automatization; occasional L1 intrusions; circumlocution.
+[Score 7–10: High]      ──> Direct concept-to-form access; native-like cadence; zero translation pauses.
+Table D1: Holistic Evaluation Criteria
+content_copy 
+Score Band	Classification	Behavioral Indicators & Speech Architecture	Psycholinguistic Characteristics
+1 – 3	Heavily Mediated (Beginner / Rigid Translation)	• Frequent, prolonged pauses (>3000" ms" ) indicating internal mental translation.<br>• Pervasive L1-calqued syntactic structures and direct idioms.<br>• Frequent overt requests for L1-to-L2 equivalents.	Speech formulation is locked in serial lexical mediation: ["Concept" ]→["L1 Lemma" ]→["L2 Form" ]. High cognitive friction.
+4 – 6	Intermediate (Emerging Direct Access)	• Moderate latencies (1500"-" 2500" ms" ) during discourse transitions.<br>• Occasional L1 structural intrusions under high cognitive load.<br>• Successful use of descriptive circumlocution to bypass missing words.	Intermediate transition phase: Direct conceptual pathways emerge for high-frequency vocabulary; complex ideas still trigger L1 lookup.
+7 – 8	Proficient (Automatized Conceptual Flow)	• Low latencies (<1200" ms" ); natural discourse rhythm.<br>• Absence of structural calques; spontaneous use of target idioms.<br>• Self-corrections occur exclusively within L2 phonological/lexical frames.	Direct conceptual mapping is operational (["Concept" ]→["L2 Form" ]). Minimal L1 co-activation without executive strain.
+9 – 10	Advanced / Direct (Native-like Conceptualization)	• Spontaneous, immediate speech onset (<900" ms" ).<br>• Fully flexible idiomatic phrasing, semantic nuance, and cohesive discourse.<br>• Zero evidence of L1 interference or translation hesitations.	Fully proceduralized direct concept mediation. Semantic processing exhibits low neurophysiological friction (N400≈-1.5" " μ"V" ).
+
