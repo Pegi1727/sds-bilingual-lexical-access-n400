@@ -37,4 +37,71 @@ This repository contains the complete replication package, raw tabular datasets,
 
 ---
 
+* **GEE / LMM Group × Time Interactions:** All primary endpoints demonstrated robust Group × Time interactions ($p < 0.001$), confirming that the S-D-S cohort developed direct target-language semantic mediation rather than serial L1 translation.
+* **Bootstrapped Path Mediation (5,000 iterations):** Neurophysiological attenuation/semantic reorganization ($\Delta \text{N400}$) mediated **$72.4\%$** of the total intervention effect on L1 dependency reduction and **$68.1\%$** of the latency reduction.
+
+---
+
+## 📊 Core Figures & Dynamics
+
+### Figure 1: Longitudinal Behavioral Trajectories (2×2 Panel)
+<p align="center">
+  <img src="figures/Figure1_behavioral_2x2.png" alt="Figure 1: Behavioral Trajectories Across 6 Months" width="90%" />
+</p>
+*Trajectories of L1 Dependency (%), Speech Latency (ms), Calque Error Counts, and Oral Fluency (WPM) across Months 1, 3, and 6.*
+
+<br>
+
+### Figure 2: Neurophysiological N400 ERP Dynamics & Grand Averages
+<p align="center">
+  <img src="figures/Figure2_N400_dynamics.png" alt="Figure 2: Centroparietal N400 Dynamics" width="90%" />
+</p>
+*Centroparietal (Cz, CPz, Pz) ERP waveforms showing the progressive emergence of semantic integration effects in the S-D-S cohort versus conventional CG.*
+
+<br>
+
+### Figure 3: Correlation Matrix & Change Scores ($\Delta\text{M6} - \text{M1}$)
+<p align="center">
+  <img src="figures/Figure3_correlation_heatmap.png" alt="Figure 3: Correlation Heatmap" width="75%" />
+</p>
+*Spearman/Pearson correlation matrix showing tight cross-modal coupling between electrophysiological changes ($\Delta \text{N400}$) and cognitive fluency markers.*
+
+---
+
+## 📂 Repository Structure
+```tree
+sds-bilingual-lexical-access-n400/
+├── figures/
+│   ├── ga.png                                # Graphical Abstract (Primary overview)
+│   ├── Figure1_behavioral_2x2.png           # 4-panel behavioral trajectory plot
+│   ├── Figure2_N400_dynamics.png            # ERP waveforms & scalp topographies
+│   └── Figure3_correlation_heatmap.png      # Inter-variable correlation matrix
+├── data/
+│   ├── raw_data_long.csv                     # Long-format longitudinal data (N=120 obs)
+│   ├── raw_data_wide.csv                     # Wide-format participant-level metrics
+│   ├── raw_change_scores.csv                 # Pre-post ΔM6-M1 change scores
+│   ├── data_dictionary.csv                   # Full FAIR codebook & variable metadata
+│   └── workbook (2).xlsx                     # Master raw data sheets
+├── results/
+│   ├── 01_descriptives.csv                   # Descriptive statistics (Mean, SD, SEM, 95% CI)
+│   ├── 02_gee_lmm_results.csv                # Longitudinal model estimates & coefficients
+│   ├── 03_correlation_matrix.csv             # Full bivariate correlation table
+│   ├── 04_path_model.csv                     # Path mediation coefficients & bootstrap CIs
+│   └── 05_erp_n400_summary.csv               # ROI window amplitudes & Cohen's d values
+├── scripts/
+│   ├── 01_data_preprocessing.py             # Data cleaning, validation, and harmonization
+│   ├── 02_erp_n400_analysis.py               # MNE-based ERP filtering, epoching, and ROI extraction
+│   ├── 03_statistical_models.py              # LMM (statsmodels) and GEE regressions
+│   ├── 04_path_model.py                      # Mediation path analysis with 5,000 bootstraps
+│   ├── 05_generate_figures.py                # Publication-ready figure generation
+│   ├── replication_analysis.R                # End-to-end R analysis (lme4, lavaan, ggplot2)
+│   └── replication_analysis.ipynb            # Interactive step-by-step Jupyter Notebook
+├── LICENSE                                   # Creative Commons Attribution 4.0 International
+└── README.md                                 # Project documentation and reproduction guide
+---
+⚖️ License
+This project and all associated datasets are distributed under the Creative Commons Attribution 4.0 International (CC BY 4.0) license. Code routines are licensed under the MIT License.
+---
+
+
 ### 2. Longitudinal Modeling & Mediation Analyses
