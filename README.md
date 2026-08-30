@@ -95,7 +95,7 @@ The following table provides a concise, FAIR-aligned description of the core var
 > **Change-score convention:** Delta variables are calculated as `M6 − M1`. Therefore, the interpretation of the sign depends on the outcome: negative values indicate reductions in L1 dependency, speech latency, and calque errors; positive values indicate increased oral fluency. For N400 amplitude, interpretation should follow the polarity and preprocessing conventions documented in the analysis protocol.
 ---
 
-### FAIR Data Notes
+### 🌐 FAIR Data Compliance
 
 | FAIR principle | Repository implementation |
 |:---|:---|
@@ -104,14 +104,7 @@ The following table provides a concise, FAIR-aligned description of the core var
 | **Interoperable** | Tabular datasets are provided in CSV format with explicit variable names, units, group codes, and timepoint labels. |
 | **Reusable** | The repository includes a data dictionary, preprocessing scripts, statistical-analysis code, output tables, and versioned citation metadata. |
 ---
-🌐 FAIR Data Compliance
 
-FAIR Principle	Implementation in this Repository
-Findable	Persistently indexed and cited via DOI: 10.5281/zenodo.22161369.
-Accessible	Fully open access; data, metadata, analysis scripts, and model outputs freely downloadable.
-Interoperable	Data formatted in standard Long/Wide CSV files with an explicit, machine-readable data dictionary.
-Reusable	Dual-licensed (CC BY 4.0 for data/docs, MIT for scripts) with complete environment requirements.
----
 
   ## 🎛️ EEG Hardware & Recording Specifications
 ### 🎛️ EEG Acquisition System & Hardware Specifications
