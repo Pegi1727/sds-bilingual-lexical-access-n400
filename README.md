@@ -148,36 +148,23 @@ To replicate the statistical models and figures reported in the manuscript:
 ---
 
 ## 📂 Repository Structure
-```tree
+
+```text
 sds-bilingual-lexical-access-n400/
-├── figures/
-│   ├── ga.png                                # Graphical Abstract (Primary overview)
-│   ├── Figure1_behavioral_2x2.png           # 4-panel behavioral trajectory plot
-│   ├── Figure2_N400_dynamics.png            # ERP waveforms & scalp topographies
-│   └── Figure3_correlation_heatmap.png      # Inter-variable correlation matrix
+│
 ├── data/
-│   ├── raw_data_long.csv                     # Long-format longitudinal data (N=120 obs)
-│   ├── raw_data_wide.csv                     # Wide-format participant-level metrics
-│   ├── raw_change_scores.csv                 # Pre-post ΔM6-M1 change scores
-│   ├── data_dictionary.csv                   # Full FAIR codebook & variable metadata
-│   └── workbook (2).xlsx                     # Master raw data sheets
-├── results/
-│   ├── 01_descriptives.csv                   # Descriptive statistics (Mean, SD, SEM, 95% CI)
-│   ├── 02_gee_lmm_results.csv                # Longitudinal model estimates & coefficients
-│   ├── 03_correlation_matrix.csv             # Full bivariate correlation table
-│   ├── 04_path_model.csv                     # Path mediation coefficients & bootstrap CIs
-│   └── 05_erp_n400_summary.csv               # ROI window amplitudes & Cohen's d values
+│   ├── raw_eeg_sample.csv               # Anonymized sample ERP epoch data
+│   └── processed_n400_features.csv      # Extracted 300-500 ms window features
+│
 ├── scripts/
-│   ├── 01_data_preprocessing.py             # Data cleaning, validation, and harmonization
-│   ├── 02_erp_n400_analysis.py               # MNE-based ERP filtering, epoching, and ROI extraction
-│   ├── 03_statistical_models.py              # LMM (statsmodels) and GEE regressions
-│   ├── 04_path_model.py                      # Mediation path analysis with 5,000 bootstraps
-│   ├── 05_generate_figures.py                # Publication-ready figure generation
-│   ├── replication_analysis.R                # End-to-end R analysis (lme4, lavaan, ggplot2)
-│   └── replication_analysis.ipynb            # Interactive step-by-step Jupyter Notebook
-├── LICENSE                                   # Creative Commons Attribution 4.0 International
-└── README.md                                 # Project documentation and reproduction guide
----
-
-
-### 2. Longitudinal Modeling & Mediation Analyses
+│   ├── 01_data_validation_n400.py       # Time-window (300-500ms) & ROI extraction
+│   ├── 02_lmm_modeling.py               # Linear Mixed-Effects Models (LMM)
+│   └── 03_publication_plots.py          # Publication-ready figure generation
+│
+├── figures/
+│   ├── fig1_erp_waveforms.png           # Grand-average ERP waveforms
+│   └── fig2_sds_n400_correlation.png    # S-D-S score vs N400 regression plot
+│
+├── requirements.txt                     # Python dependencies
+├── LICENSE                              # MIT License
+└── README.md                            # Project documentation & reproduction guide
