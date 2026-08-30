@@ -67,6 +67,10 @@ This repository contains the complete replication package, raw tabular datasets,
 *Spearman/Pearson correlation matrix showing tight cross-modal coupling between electrophysiological changes ($\Delta \text{N400}$) and cognitive fluency markers.*
 
 ---
+⚖️ License
+This project and all associated datasets are distributed under the Creative Commons Attribution 4.0 International (CC BY 4.0) license. Code routines are licensed under the MIT License.
+---
+
 
 ## 📂 Repository Structure
 ```tree
@@ -98,9 +102,6 @@ sds-bilingual-lexical-access-n400/
 │   └── replication_analysis.ipynb            # Interactive step-by-step Jupyter Notebook
 ├── LICENSE                                   # Creative Commons Attribution 4.0 International
 └── README.md                                 # Project documentation and reproduction guide
----
-⚖️ License
-This project and all associated datasets are distributed under the Creative Commons Attribution 4.0 International (CC BY 4.0) license. Code routines are licensed under the MIT License.
 ---
 
 
