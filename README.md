@@ -103,7 +103,35 @@ The following table provides a concise, FAIR-aligned description of the core var
 | **Accessible** | Data, metadata, results, and analysis scripts are available through GitHub and the archived Zenodo release. |
 | **Interoperable** | Tabular datasets are provided in CSV format with explicit variable names, units, group codes, and timepoint labels. |
 | **Reusable** | The repository includes a data dictionary, preprocessing scripts, statistical-analysis code, output tables, and versioned citation metadata. |
+---
+  ## 🎛️ EEG Hardware & Recording Specifications
+### 🎛️ EEG Acquisition System & Hardware Specifications
 
+Electrophysiological data were recorded using a high-density, research-grade active electrode acquisition system conforming to standard neuroimaging reporting guidelines (COBIDAS):
+
+#### 1. Hardware & Core Specifications
+* **System / Manufacturer:** BioSemi ActiveTwo (BioSemi B.V., Amsterdam, Netherlands).
+* **Channel Configuration:** 64 active scalp EEG channels + 1 hardware synchronization Status/Trigger channel (65 channels total in the continuous BioSemi Data Format, `.bdf`).
+* **Montage Standard:** Standard 10–20 International extended system embedded in an elastic fabric head-cap (BioSemi headcap).
+* **Analog-to-Digital (A/D) Resolution:** 24-bit DC-coupled sigma-delta ($\Sigma\Delta$) converters per channel (providing an ultra-wide dynamic range and eliminating high-amplitude saturation).
+* **Sampling Rate:** $500\text{ Hz}$ (continuous streaming).
+* **Bandwidth & Hardware Filters:** DC to $100\text{ Hz}$ ($-3\text{ dB}$ anti-aliasing fifth-order sinc filter).
+
+#### 2. Active Electrodes, Referencing & Impedance Control
+* **Active Electrode Technology:** Sintered $\text{Ag/AgCl}$ active electrodes with integrated low-noise pre-amplifiers directly at the electrode tip to eliminate cable-movement artifacts.
+* **Online Reference System:** True reference-free acquisition using the standard BioSemi active feedback loop:
+  * **CMS (Common Mode Sense):** Active drive electrode.
+  * **DRL (Driven Right Leg):** Passive feedback reference loop suppressing common-mode noise and body mains interference ($50\text{ Hz}$).
+* **Electrode Offset / Impedance:** Electrode offsets were stabilized and maintained within the strict operational window of $\pm 20\text{ mV}$ using high-conductivity electrolyte gel ($\text{Signa Gel}^\circledR$) before the commencement of each recording block.
+
+#### 3. Stimulus Synchronization & Status Channel
+* **Hardware Triggering:** Optical parallel port synchronization delivering precise, sub-millisecond digital trigger codes (Codes `1` and `2`) directly into the 24-bit digital `Status` channel (Channel 65).
+* **Latency Jitter:** $< 1\text{ ms}$ verified via photodiode timing tests.
+
+#### 4. Electrode Region of Interest (ROI) for N400 Quantification
+* **ROI Cluster:** Centroparietal midline montage (`Cz`, `CPz`, `Pz`).
+* **Offline Re-referencing:** Average reference / mastoid-linked reference applied during offline signal processing in MNE-Python.
+---
 
 ## 📂 Repository Structure
 ```tree
