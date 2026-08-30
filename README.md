@@ -138,6 +138,14 @@ Pegah.Merrikhiii@gmail.com
 Independent Researcher
 www.linkedin.com/in/dr-pegah-merrikhi-98a7aa105
 ---
+## Reproducibility & Scripts
+
+To replicate the statistical models and figures reported in the manuscript:
+
+1. **N400 Extraction:** Run `python scripts/01_data_validation_n400.py`
+2. **LMM Analysis:** Run `python scripts/02_lmm_modeling.py`
+3. **Figures Generation:** Run `python scripts/03_publication_plots.py`
+---
 
 ## 📂 Repository Structure
 ```tree
