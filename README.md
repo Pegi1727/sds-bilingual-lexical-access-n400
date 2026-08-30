@@ -133,10 +133,16 @@ Electrophysiological data were recorded using a high-density, research-grade act
 * **Offline Re-referencing:** Average reference / mastoid-linked reference applied during offline signal processing in MNE-Python.
 ---
 
-Contact  Dr Pegah Merrikhi   PhD in TESOL and Applied Linguistics                   
-Pegah.Merrikhiii@gmail.com 
+📬 Author & Contact
+Dr. Pegah Merrikhi
+
+PhD in TESOL and Applied Linguistics
+
 Independent Researcher
-www.linkedin.com/in/dr-pegah-merrikhi-98a7aa105
+
+📧 Email: Pegah.Merrikhiii@gmail.com
+
+🔗 LinkedIn: dr-pegah-merrikhi
 ---
 ## Reproducibility & Scripts
 
