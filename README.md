@@ -71,6 +71,39 @@ This repository contains the complete replication package, raw tabular datasets,
 This project and all associated datasets are distributed under the Creative Commons Attribution 4.0 International (CC BY 4.0) license. Code routines are licensed under the MIT License.
 ---
 
+## 📋 Data Dictionary
+
+The following table provides a concise, FAIR-aligned description of the core variables included in the longitudinal dataset. For the complete variable-level metadata, see [`data/data_dictionary.csv`](data/data_dictionary.csv).
+
+| Variable | Data Type | Unit / Levels | Timepoints | Description |
+|:---|:---:|:---|:---:|:---|
+| `participant_id` | String | `sub-01`–`sub-40` | — | Unique anonymized identifier assigned to each participant. |
+| `group` | Categorical | `EG`, `CG` | — | Study-group assignment: S-D-S experimental group (`EG`) or active control group (`CG`). |
+| `month` | Integer | `1`, `3`, `6` | M1, M3, M6 | Longitudinal assessment month. |
+| `session` | Categorical | `M1`, `M3`, `M6` | M1, M3, M6 | Coded assessment session corresponding to Months 1, 3, and 6. |
+| `l1_dependency` | Numeric | Percentage (`0`–`100%`) | M1, M3, M6 | Proportion of responses showing L1-mediated lexical or conceptual processing. Lower values indicate less reliance on L1 translation. |
+| `speech_latency` | Numeric | Milliseconds (`ms`) | M1, M3, M6 | Response-onset latency during the elicited L2 production task. Lower values indicate faster lexical access. |
+| `calque_errors` | Integer | Count | M1, M3, M6 | Number of literal cross-linguistic transfer errors observed during standardized elicitation. |
+| `oral_fluency` | Numeric | Words per minute (`WPM`) | M1, M3, M6 | Rate of L2 oral production, expressed as words produced per minute. |
+| `n400_amplitude` | Numeric | Microvolts (`µV`) | M1, M3, M6 | Mean N400 ERP amplitude measured within the predefined centroparietal region of interest and analysis window. |
+| `delta_l1_dependency` | Numeric | Percentage points | M6 − M1 | Participant-level change in L1 dependency from baseline to post-intervention. |
+| `delta_speech_latency` | Numeric | Milliseconds (`ms`) | M6 − M1 | Participant-level change in speech-onset latency from baseline to post-intervention. |
+| `delta_calque_errors` | Integer | Count difference | M6 − M1 | Participant-level change in the number of calque errors. |
+| `delta_oral_fluency` | Numeric | Words per minute (`WPM`) | M6 − M1 | Participant-level change in L2 oral fluency. |
+| `delta_n400_amplitude` | Numeric | Microvolts (`µV`) | M6 − M1 | Participant-level change in N400 amplitude between baseline and post-intervention. |
+
+> **Change-score convention:** Delta variables are calculated as `M6 − M1`. Therefore, the interpretation of the sign depends on the outcome: negative values indicate reductions in L1 dependency, speech latency, and calque errors; positive values indicate increased oral fluency. For N400 amplitude, interpretation should follow the polarity and preprocessing conventions documented in the analysis protocol.
+---
+
+### FAIR Data Notes
+
+| FAIR principle | Repository implementation |
+|:---|:---|
+| **Findable** | The replication package is persistently identified by [DOI: 10.5281/zenodo.22161369](https://doi.org/10.5281/zenodo.22161369). |
+| **Accessible** | Data, metadata, results, and analysis scripts are available through GitHub and the archived Zenodo release. |
+| **Interoperable** | Tabular datasets are provided in CSV format with explicit variable names, units, group codes, and timepoint labels. |
+| **Reusable** | The repository includes a data dictionary, preprocessing scripts, statistical-analysis code, output tables, and versioned citation metadata. |
+
 
 ## 📂 Repository Structure
 ```tree
