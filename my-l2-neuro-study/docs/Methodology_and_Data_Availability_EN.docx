@@ -1,0 +1,45 @@
+Representative Data Verification (Methodology)
+
+To verify the integrity and reproducibility of the electrophysiological processing pipeline, summary N400 amplitude values were exported for one representative participant per group — Sub-01 from the experimental group (EG) and Sub-21 from the active control group (CG) — across all three longitudinal assessment timepoints (Months 1, 3, and 6). Each record was stored as a MATLAB Level 5 (.mat) file containing five documented variables: subject_id, group, month, n400_amplitude_uv (double precision, in microvolts), and a status field set to verified_sample (S1–S6).
+
+All six files were validated programmatically prior to inclusion in the supplementary material. The validation routine confirmed: (a) scalar integrity, with all numeric fields finite (no NaN or Inf values) and of the expected type (int64 for identifiers and timepoints; float64 for amplitudes); (b) schema consistency, with an identical five-variable structure across all files; and (c) metadata–filename consistency, with the embedded subject_id, group, and month values matching the naming convention sub-NN_GG_Mn in every case (S1–S6).
+
+The extracted values were as follows. The representative EG participant exhibited a monotonic reduction in N400 negativity from −5.15 µV at baseline (Month 1) to −3.49 µV at Month 3 and −1.44 µV at Month 6 — an attenuation of approximately 72% over the six-month interval, following a nearly linear trajectory (S1; S2; S3). In contrast, the CG participant remained largely stable across the same period (−5.58 µV at Month 1, −5.18 µV at Month 3, and −5.13 µV at Month 6; total change ≈ 0.45 µV, with the trajectory flattening after Month 3) (S4; S5; S6). The divergent single-subject trajectories are illustrated in the accompanying publication-quality figure (300 dpi) (S7). All amplitudes were negative, consistent with standard N400 scoring conventions in which the component is quantified as a negative-going deflection in microvolts.
+
+These single-subject trajectories are presented solely for methodological illustration and pipeline verification; they do not substitute for the group-level linear mixed-effects analysis (N = 40) reported in the main manuscript. Furthermore, the archived files contain extracted ERP component summary values, not raw time-series waveforms, and should accordingly be cited as extracted component values for representative samples rather than representative waveforms (S1–S7).
+
+Data Availability Statement
+
+Representative processed ERP outputs (N400 amplitude summary values in MATLAB .mat format) for one participant per experimental group (Sub-01, EG; Sub-21, CG) across all three assessment timepoints (Months 1, 3, and 6) (S1; S2; S3; S4; S5; S6), together with the complete reproducible analysis pipeline (LMM specification and figure-generation scripts) (S7), are provided in the Supplementary Material. Due to ethical restrictions concerning clinical language-learning data, the full longitudinal electrophysiological dataset (N = 40) is not publicly archived; it is available from the corresponding author upon reasonable request, in accordance with the FAIR data principles.
+
+References
+
+
+
+
+
+sub-01_EG_M1.mat — representative EG sample, Month 1 (MAT Level 5 format; five-variable schema).
+
+
+
+sub-01_EG_M3.mat — representative EG sample, Month 3 (MAT Level 5 format; five-variable schema).
+
+
+
+sub-01_EG_M6.mat — representative EG sample, Month 6 (MAT Level 5 format; five-variable schema).
+
+
+
+sub-21_CG_M1.mat — representative CG sample, Month 1 (MAT Level 5 format; five-variable schema).
+
+
+
+sub-21_CG_M3.mat — representative CG sample, Month 3 (MAT Level 5 format; five-variable schema).
+
+
+
+sub-21_CG_M6.mat — representative CG sample, Month 6 (MAT Level 5 format; five-variable schema).
+
+
+
+representative_subjects_trajectory.png — comparative N400 trajectory figure, EG vs. CG, 300 dpi.
