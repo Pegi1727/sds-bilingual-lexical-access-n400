@@ -154,25 +154,45 @@ To replicate the statistical models and figures reported in the manuscript:
 2. **LMM Analysis:** Run `python scripts/02_lmm_modeling.py`
 3. **Figures Generation:** Run `python scripts/03_publication_plots.py`
 ---
-
-## 📂 Repository Structure
-
+ject documentation & reproduction guide
+---
+## 🗂️ Repository Structure
 ```text
 sds-bilingual-lexical-access-n400/
 │
-├── data/
-│   ├── raw_eeg_sample.csv               # Anonymized sample ERP epoch data
-│   └── processed_n400_features.csv      # Extracted 300-500 ms window features
+├── README.md                                   # Study overview, key findings, and reproduction guide
+├── LICENSE                                     # CC BY 4.0 (data & figures) | MIT (code)
+├── CITATION.cff                                # Citation metadata linked to the Zenodo DOI
+├── requirements.txt                            # Python dependencies (mne, statsmodels, scipy, pandas, ...)
+├── environment.yml                             # Conda environment for full reproducibility
 │
-├── scripts/
-│   ├── 01_data_validation_n400.py       # Time-window (300-500ms) & ROI extraction
-│   ├── 02_lmm_modeling.py               # Linear Mixed-Effects Models (LMM)
-│   └── 03_publication_plots.py          # Publication-ready figure generation
+├── data/                                       # FAIR-aligned datasets
+│   ├── data_dictionary.csv                     # Variable-level metadata and definitions
+│   ├── processed_behavioral_erp_longitudinal.csv  # Aggregated longitudinal data (M1, M3, M6; N = 40)
+│   ├── raw_bdf/                                # Raw BioSemi BDF neurophysiological streams
+│   └── representative_samples/                 # Representative subject-level ERP samples (.mat)
+│       ├── sub-01_EG_M1.mat                    # Experimental Group, Month 1 (Baseline)
+│       ├── sub-01_EG_M3.mat                    # Experimental Group, Month 3 (Mid-Intervention)
+│       ├── sub-01_EG_M6.mat                    # Experimental Group, Month 6 (Post-Intervention)
+│       ├── sub-21_CG_M1.mat                    # Control Group, Month 1 (Baseline)
+│       ├── sub-21_CG_M3.mat                    # Control Group, Month 3 (Mid-Intervention)
+│       └── sub-21_CG_M6.mat                    # Control Group, Month 6 (Post-Intervention)
 │
-├── figures/
-│   ├── fig1_erp_waveforms.png           # Grand-average ERP waveforms
-│   └── fig2_sds_n400_correlation.png    # S-D-S score vs N400 regression plot
+├── scripts/                                    # Analysis pipeline (run in numbered order)
+│   ├── 01_eeg_preprocessing_mne.py             # Filtering, epoching, ICA, and N400 ROI extraction (Cz, CPz, Pz)
+│   ├── 02_lmm_analysis.py                      # LMM / GEE: Group × Time interaction models
+│   ├── 03_mediation_analysis.R                 # Bootstrapped path mediation (5,000 iterations)
+│   └── 04_plot_figures.py                      # Reproduces Figures 1–3 and the trajectory plot
 │
-├── requirements.txt                     # Python dependencies
-├── LICENSE                              # MIT License
-└── README.md                            # Project documentation & reproduction guide
+├── figures/                                    # Publication-ready figures
+│   ├── ga.png                                  # Graphical abstract
+│   ├── Figure1_behavioral_2x2.png              # Longitudinal behavioral trajectories (2×2 panel)
+│   ├── Figure2_N400_dynamics.png               # Centroparietal ERP grand averages (N400)
+│   ├── Figure3_correlation_heatmap.png         # Cross-modal correlation matrix (ΔN400 ↔ behavior)
+│   └── representative_subjects_trajectory.png  # EG vs. CG representative subject dynamics
+│
+└── docs/                                       # Supplementary documentation
+├── Methodology_and_Data_Availability_EN.docx
+├── Supplementary_Materials.pdf             # EEG pipeline parameters and analysis details
+└── Task_Protocols.pdf                      # Picture-naming & elicitation task protocols
+---
